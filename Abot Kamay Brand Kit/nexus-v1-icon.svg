@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-80 -80 160 160" width="400" height="400">
+  <defs>
+    <linearGradient id="warm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="50%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+    <linearGradient id="cool" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#E0E7FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="intersect" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#A855F7" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.8"/>
+    </linearGradient>
+    <clipPath id="cr">
+      <circle cx="28" cy="0" r="64"/>
+    </clipPath>
+    <filter id="gl" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <!-- Warm circle (left) -->
+  <circle cx="-28" cy="0" r="64" fill="none" stroke="url(#warm)" stroke-width="5"/>
+
+  <!-- Cool circle (right) -->
+  <circle cx="28" cy="0" r="64" fill="none" stroke="url(#cool)" stroke-width="5"/>
+
+  <!-- Intersection fill -->
+  <circle cx="-28" cy="0" r="62" fill="url(#intersect)" clip-path="url(#cr)" opacity="0.2"/>
+
+  <!-- Beacon glow -->
+  <circle cx="0" cy="0" r="12" fill="url(#glow)" filter="url(#gl)" opacity="0.6"/>
+
+  <!-- Beacon dot -->
+  <circle cx="0" cy="0" r="10" fill="url(#glow)"/>
+  <circle cx="0" cy="0" r="5" fill="#FFFFFF"/>
+
+  <!-- Signal rings -->
+  <circle cx="0" cy="0" r="18" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="0" cy="0" r="28" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+</svg>

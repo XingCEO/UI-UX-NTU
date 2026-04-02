@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abot Kamay — Nexus V2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#06060A;color:#fafafa;font-family:'Plus Jakarta Sans','Inter',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:60px 20px}
+
+  .brand-header{font-size:11px;letter-spacing:8px;color:#3B3B4F;margin-bottom:12px;text-transform:uppercase;font-weight:500}
+  .concept-label{font-size:10px;letter-spacing:4px;color:#2A2A3D;margin-bottom:80px;font-weight:400}
+
+  /* ===== MAIN LOGO ===== */
+  .main-logo{display:flex;align-items:center;gap:56px;margin-bottom:100px}
+  .nexus-icon{width:220px;height:220px;flex-shrink:0}
+  .nexus-icon svg{width:100%;height:100%}
+  .logo-text h2{font-size:76px;font-weight:900;letter-spacing:3px;line-height:1.0;color:#FAFAFA;font-family:'Plus Jakarta Sans',sans-serif}
+  .logo-text .tagline{font-size:15px;font-weight:600;letter-spacing:12px;color:#E8772E;margin-top:14px;text-transform:uppercase}
+
+  /* ===== SECTION ===== */
+  .section-title{font-size:11px;letter-spacing:5px;color:#3B3B4F;margin:50px 0 28px;text-transform:uppercase;font-weight:600}
+  .section-line{width:60px;height:1px;background:linear-gradient(90deg,#E8772E,#2D6FE8);margin:0 auto 50px;border-radius:1px}
+
+  /* ===== VARIATIONS ===== */
+  .variations{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;margin-bottom:50px}
+  .var-card{width:320px;height:180px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:24px;padding:28px;position:relative;overflow:hidden}
+  .var-card::before{content:'';position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,rgba(232,119,46,0.15),rgba(45,111,232,0.15));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+  .var-card.dark{background:#0A0A0F}
+  .var-card.light{background:#F8F9FC}
+  .var-card.light::before{background:linear-gradient(135deg,rgba(232,119,46,0.2),rgba(45,111,232,0.2))}
+  .var-card.navy{background:#0C1628}
+  .var-card .mini-icon svg{width:80px;height:80px}
+  .var-card .mini-text h3{font-size:26px;font-weight:900;letter-spacing:2px;line-height:1.1;font-family:'Plus Jakarta Sans',sans-serif}
+  .var-card .mini-text .mini-tag{font-size:9px;letter-spacing:6px;font-weight:600;margin-top:6px}
+  .var-card.dark .mini-text h3{color:#FAFAFA}
+  .var-card.dark .mini-text .mini-tag{color:#E8772E}
+  .var-card.light .mini-text h3{color:#111117}
+  .var-card.light .mini-text .mini-tag{color:#C05E1C}
+  .var-card.navy .mini-text h3{color:#E8EDF8}
+  .var-card.navy .mini-text .mini-tag{color:#E8772E}
+  .var-label{font-size:10px;letter-spacing:3px;color:#2A2A3D;text-align:center;margin-top:10px;font-weight:500}
+
+  /* ===== PALETTE ===== */
+  .palette{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:50px}
+  .swatch{text-align:center}
+  .swatch .color{width:64px;height:44px;border-radius:10px;margin-bottom:8px;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+  .swatch .hex{font-family:'SF Mono',monospace;font-size:10px;color:#4A4A5F;font-weight:500}
+  .swatch .name{font-size:9px;color:#2A2A3D;margin-top:3px;font-weight:500}
+
+  /* ===== APP ICON ===== */
+  .app-icons{display:flex;gap:20px;align-items:flex-end;margin-bottom:40px}
+  .app-icon-box{border-radius:20px;background:#0A0A0F;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .app-icon-box::before{content:'';position:absolute;inset:0;border-radius:20px;padding:1px;background:linear-gradient(135deg,rgba(232,119,46,0.2),rgba(45,111,232,0.2));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+  .app-lg{width:88px;height:88px}
+  .app-md{width:64px;height:64px;border-radius:16px}
+  .app-md::before{border-radius:16px}
+  .app-sm{width:44px;height:44px;border-radius:12px}
+  .app-sm::before{border-radius:12px}
+
+  /* ===== DESIGN PHILOSOPHY ===== */
+  .philosophy{max-width:800px;margin-top:60px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+  .phil-card{background:#0A0A10;border:1px solid #16162A;border-radius:14px;padding:28px;text-align:center}
+  .phil-card .phil-icon{font-size:28px;margin-bottom:12px}
+  .phil-card h4{font-size:13px;font-weight:700;color:#FAFAFA;margin-bottom:8px;letter-spacing:1px}
+  .phil-card p{font-size:12px;color:#5A5A72;line-height:1.8;font-weight:400}
+
+  .footer-note{margin-top:80px;font-size:10px;color:#1E1E30;letter-spacing:3px;font-weight:500}
+</style>
+</head>
+<body>
+
+<div class="brand-header">ABOT KAMAY INC.</div>
+<div class="concept-label">BRAND IDENTITY SYSTEM — NEXUS</div>
+
+<!-- ============ MAIN LOGO ============ -->
+<div class="main-logo">
+  <div class="nexus-icon">
+    <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Warm gradient - sunset gold to deep orange -->
+        <linearGradient id="wg" x1="0%" y1="20%" x2="80%" y2="100%">
+          <stop offset="0%" stop-color="#F5923A"/>
+          <stop offset="40%" stop-color="#E8772E"/>
+          <stop offset="100%" stop-color="#C05E1C"/>
+        </linearGradient>
+        <!-- Cool gradient - sky blue to deep blue -->
+        <linearGradient id="cg" x1="100%" y1="0%" x2="20%" y2="100%">
+          <stop offset="0%" stop-color="#5B9BF5"/>
+          <stop offset="40%" stop-color="#2D6FE8"/>
+          <stop offset="100%" stop-color="#1B4FBF"/>
+        </linearGradient>
+        <!-- Intersection blend -->
+        <linearGradient id="ig" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#E8772E" stop-opacity="0.35"/>
+          <stop offset="50%" stop-color="#8B5CF6" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#2D6FE8" stop-opacity="0.35"/>
+        </linearGradient>
+        <!-- Beacon radial -->
+        <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FFFFFF"/>
+          <stop offset="30%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+          <stop offset="60%" stop-color="#E0E7FF" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#B4C6EE" stop-opacity="0"/>
+        </radialGradient>
+        <!-- Outer aura -->
+        <radialGradient id="aura" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="cr"><circle cx="140" cy="120" r="72"/></clipPath>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="10" result="b"/>
+          <feComposite in="SourceGraphic" in2="b" operator="over"/>
+        </filter>
+        <filter id="softglow" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur stdDeviation="18"/>
+        </filter>
+      </defs>
+
+      <!-- Subtle aura behind circles -->
+      <circle cx="120" cy="120" r="85" fill="url(#aura)" filter="url(#softglow)" opacity="0.4"/>
+
+      <!-- Warm circle (left - OFW) -->
+      <circle cx="100" cy="120" r="72" fill="none" stroke="url(#wg)" stroke-width="6.5" stroke-linecap="round"/>
+
+      <!-- Cool circle (right - Family) -->
+      <circle cx="140" cy="120" r="72" fill="none" stroke="url(#cg)" stroke-width="6.5" stroke-linecap="round"/>
+
+      <!-- Intersection zone -->
+      <circle cx="100" cy="120" r="70" fill="url(#ig)" clip-path="url(#cr)"/>
+
+      <!-- Beacon glow layer -->
+      <circle cx="120" cy="120" r="22" fill="url(#bg)" filter="url(#glow)" opacity="0.5"/>
+
+      <!-- Beacon core -->
+      <circle cx="120" cy="120" r="12" fill="url(#bg)"/>
+      <circle cx="120" cy="120" r="6" fill="#FFFFFF"/>
+
+      <!-- Signal rings -->
+      <circle cx="120" cy="120" r="20" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.2"/>
+      <circle cx="120" cy="120" r="30" fill="none" stroke="#FFFFFF" stroke-width="0.8" opacity="0.1"/>
+      <circle cx="120" cy="120" r="42" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.05"/>
+    </svg>
+  </div>
+  <div class="logo-text">
+    <h2>ABOT<br>KAMAY</h2>
+    <div class="tagline">WITHIN REACH</div>
+  </div>
+</div>
+
+<div class="section-line"></div>
+
+<!-- ============ VARIATIONS ============ -->
+<div class="section-title">COLOR VARIATIONS</div>
+<div class="variations">
+  <div>
+    <div class="var-card dark">
+      <div class="mini-icon">
+        <svg viewBox="0 0 80 80"><defs><linearGradient id="w2" x1="0%" y1="20%" x2="80%" y2="100%"><stop offset="0%" stop-color="#F5923A"/><stop offset="100%" stop-color="#C05E1C"/></linearGradient><linearGradient id="c2" x1="100%" y1="0%" x2="20%" y2="100%"><stop offset="0%" stop-color="#5B9BF5"/><stop offset="100%" stop-color="#1B4FBF"/></linearGradient></defs><circle cx="33" cy="40" r="26" fill="none" stroke="url(#w2)" stroke-width="3.5"/><circle cx="47" cy="40" r="26" fill="none" stroke="url(#c2)" stroke-width="3.5"/><circle cx="40" cy="40" r="4" fill="#FFFFFF"/><circle cx="40" cy="40" r="2" fill="#FFFFFF"/></svg>
+      </div>
+      <div class="mini-text"><h3>ABOT<br>KAMAY</h3><div class="mini-tag">WITHIN REACH</div></div>
+    </div>
+    <div class="var-label">DARK</div>
+  </div>
+  <div>
+    <div class="var-card light">
+      <div class="mini-icon">
+        <svg viewBox="0 0 80 80"><circle cx="33" cy="40" r="26" fill="none" stroke="#C05E1C" stroke-width="3.5"/><circle cx="47" cy="40" r="26" fill="none" stroke="#1B4FBF" stroke-width="3.5"/><circle cx="40" cy="40" r="4" fill="#111117"/><circle cx="40" cy="40" r="2" fill="#111117"/></svg>
+      </div>
+      <div class="mini-text"><h3>ABOT<br>KAMAY</h3><div class="mini-tag">WITHIN REACH</div></div>
+    </div>
+    <div class="var-label">LIGHT</div>
+  </div>
+  <div>
+    <div class="var-card navy">
+      <div class="mini-icon">
+        <svg viewBox="0 0 80 80"><defs><linearGradient id="w3" x1="0%" y1="20%" x2="80%" y2="100%"><stop offset="0%" stop-color="#F5923A"/><stop offset="100%" stop-color="#E8772E"/></linearGradient><linearGradient id="c3" x1="100%" y1="0%" x2="20%" y2="100%"><stop offset="0%" stop-color="#5B9BF5"/><stop offset="100%" stop-color="#2D6FE8"/></linearGradient></defs><circle cx="33" cy="40" r="26" fill="none" stroke="url(#w3)" stroke-width="3.5"/><circle cx="47" cy="40" r="26" fill="none" stroke="url(#c3)" stroke-width="3.5"/><circle cx="40" cy="40" r="4" fill="#FFFFFF"/><circle cx="40" cy="40" r="2" fill="#FFFFFF"/></svg>
+      </div>
+      <div class="mini-text"><h3>ABOT<br>KAMAY</h3><div class="mini-tag">WITHIN REACH</div></div>
+    </div>
+    <div class="var-label">NAVY</div>
+  </div>
+</div>
+
+<!-- ============ PALETTE ============ -->
+<div class="section-title">COLOR PALETTE</div>
+<div class="palette">
+  <div class="swatch"><div class="color" style="background:linear-gradient(135deg,#F5923A,#E8772E)"></div><div class="hex">#E8772E</div><div class="name">Sunset Orange</div></div>
+  <div class="swatch"><div class="color" style="background:linear-gradient(135deg,#C05E1C,#A14D15)"></div><div class="hex">#C05E1C</div><div class="name">Deep Amber</div></div>
+  <div class="swatch"><div class="color" style="background:linear-gradient(135deg,#5B9BF5,#2D6FE8)"></div><div class="hex">#2D6FE8</div><div class="name">Ocean Blue</div></div>
+  <div class="swatch"><div class="color" style="background:linear-gradient(135deg,#1B4FBF,#153D99)"></div><div class="hex">#1B4FBF</div><div class="name">Deep Sea</div></div>
+  <div class="swatch"><div class="color" style="background:#FAFAFA"></div><div class="hex">#FAFAFA</div><div class="name">Pure White</div></div>
+  <div class="swatch"><div class="color" style="background:#06060A;border:1px solid #1E1E30"></div><div class="hex">#06060A</div><div class="name">Rich Black</div></div>
+</div>
+
+<!-- ============ APP ICONS ============ -->
+<div class="section-title">APP ICON SYSTEM</div>
+<div class="app-icons">
+  <div>
+    <div class="app-icon-box app-lg">
+      <svg viewBox="0 0 80 80" width="56" height="56"><defs><linearGradient id="aw" x1="0%" y1="20%" x2="80%" y2="100%"><stop offset="0%" stop-color="#F5923A"/><stop offset="100%" stop-color="#C05E1C"/></linearGradient><linearGradient id="ac" x1="100%" y1="0%" x2="20%" y2="100%"><stop offset="0%" stop-color="#5B9BF5"/><stop offset="100%" stop-color="#1B4FBF"/></linearGradient><radialGradient id="abg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFF"/><stop offset="50%" stop-color="#FFF" stop-opacity="0.8"/><stop offset="100%" stop-color="#FFF" stop-opacity="0"/></radialGradient></defs><circle cx="33" cy="40" r="24" fill="none" stroke="url(#aw)" stroke-width="4"/><circle cx="47" cy="40" r="24" fill="none" stroke="url(#ac)" stroke-width="4"/><circle cx="40" cy="40" r="5" fill="url(#abg)"/><circle cx="40" cy="40" r="2.5" fill="#FFF"/></svg>
+    </div>
+    <div class="var-label" style="margin-top:8px">88px</div>
+  </div>
+  <div>
+    <div class="app-icon-box app-md">
+      <svg viewBox="0 0 80 80" width="40" height="40"><circle cx="33" cy="40" r="24" fill="none" stroke="#E8772E" stroke-width="4.5"/><circle cx="47" cy="40" r="24" fill="none" stroke="#2D6FE8" stroke-width="4.5"/><circle cx="40" cy="40" r="3.5" fill="#FFF"/></svg>
+    </div>
+    <div class="var-label" style="margin-top:8px">64px</div>
+  </div>
+  <div>
+    <div class="app-icon-box app-sm">
+      <svg viewBox="0 0 80 80" width="28" height="28"><circle cx="33" cy="40" r="24" fill="none" stroke="#E8772E" stroke-width="5.5"/><circle cx="47" cy="40" r="24" fill="none" stroke="#2D6FE8" stroke-width="5.5"/><circle cx="40" cy="40" r="4" fill="#FFF"/></svg>
+    </div>
+    <div class="var-label" style="margin-top:8px">44px</div>
+  </div>
+</div>
+
+<!-- ============ DESIGN PHILOSOPHY ============ -->
+<div class="section-title">DESIGN PHILOSOPHY</div>
+<div class="philosophy">
+  <div class="phil-card">
+    <div class="phil-icon">🌅</div>
+    <h4>人情 Warmth</h4>
+    <p>暖色圓環代表在海外打拼的 OFW，帶著菲律賓陽光的溫暖，永遠心繫故鄉。</p>
+  </div>
+  <div class="phil-card">
+    <div class="phil-icon">🌊</div>
+    <h4>穩定 Stability</h4>
+    <p>冷色圓環象徵海洋彼岸的家人，穩如磐石的等待，是整個品牌堅實的根基。</p>
+  </div>
+  <div class="phil-card">
+    <div class="phil-icon">✨</div>
+    <h4>連結 Connection</h4>
+    <p>中心的亮點——每一通接通的電話、每一則傳達的訊息，讓距離不再是距離。</p>
+  </div>
+</div>
+
+<div class="footer-note">© 2026 ABOT KAMAY INC. — CONFIDENTIAL</div>
+
+</body>
+</html>

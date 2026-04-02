@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <!-- Warm circle gradient (OFW abroad - sunset/gold) -->
+    <linearGradient id="warm-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="50%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+
+    <!-- Cool circle gradient (Family at home - ocean/blue) -->
+    <linearGradient id="cool-grad" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+
+    <!-- Intersection gradient (connection zone) -->
+    <linearGradient id="intersect-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#A855F7" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Beacon glow -->
+    <radialGradient id="beacon-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#E0E7FF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Outer glow filter -->
+    <filter id="glow-warm" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="glow-cool" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="glow-beacon" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Soft shadow for the whole icon group -->
+    <filter id="icon-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+
+    <!-- Text shadow -->
+    <filter id="text-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+
+    <!-- Clip paths for intersection -->
+    <clipPath id="clip-left">
+      <circle cx="-28" cy="0" r="64"/>
+    </clipPath>
+    <clipPath id="clip-right">
+      <circle cx="28" cy="0" r="64"/>
+    </clipPath>
+  </defs>
+
+  <!-- ==================== BACKGROUND ==================== -->
+  <rect width="1200" height="800" fill="#09090B"/>
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a2e" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="800" fill="url(#grid)" opacity="0.3"/>
+
+  <!-- ==================== MAIN LOGO (Icon + Text) ==================== -->
+  <g id="Main-Logo" transform="translate(600, 260)">
+
+    <!-- Icon group -->
+    <g id="Nexus-Icon" transform="translate(-160, 0)" filter="url(#icon-shadow)">
+
+      <!-- Left circle (Warm - OFW) -->
+      <g id="Circle-Warm" filter="url(#glow-warm)">
+        <circle cx="-28" cy="0" r="64" fill="none" stroke="url(#warm-grad)" stroke-width="5" opacity="0.95"/>
+      </g>
+
+      <!-- Right circle (Cool - Family) -->
+      <g id="Circle-Cool" filter="url(#glow-cool)">
+        <circle cx="28" cy="0" r="64" fill="none" stroke="url(#cool-grad)" stroke-width="5" opacity="0.95"/>
+      </g>
+
+      <!-- Intersection highlight - vesica piscis area -->
+      <g id="Intersection-Zone" opacity="0.2">
+        <!-- Left circle clipped by right -->
+        <circle cx="-28" cy="0" r="62" fill="url(#intersect-grad)" clip-path="url(#clip-right)"/>
+      </g>
+
+      <!-- Beacon dot at intersection center -->
+      <g id="Beacon-Dot" filter="url(#glow-beacon)">
+        <circle cx="0" cy="0" r="10" fill="url(#beacon-glow)"/>
+        <circle cx="0" cy="0" r="5" fill="#FFFFFF"/>
+      </g>
+
+      <!-- Small signal rings from beacon -->
+      <circle cx="0" cy="0" r="18" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.3"/>
+      <circle cx="0" cy="0" r="28" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+    </g>
+
+    <!-- Company name -->
+    <g id="Company-Name" transform="translate(60, 0)" filter="url(#text-glow)">
+      <text x="0" y="-12" font-family="'SF Pro Display', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="72" font-weight="800" fill="#FAFAFA" letter-spacing="4" text-anchor="start">ABOT</text>
+      <text x="0" y="58" font-family="'SF Pro Display', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="72" font-weight="800" fill="#FAFAFA" letter-spacing="4" text-anchor="start">KAMAY</text>
+      <!-- Tagline -->
+      <text x="2" y="92" font-family="'SF Pro Display', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="500" fill="#F97316" letter-spacing="8" text-anchor="start">WITHIN REACH</text>
+    </g>
+  </g>
+
+  <!-- ==================== COLOR VARIATIONS ==================== -->
+
+  <!-- Section title -->
+  <text x="600" y="420" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="12" fill="#71717A" letter-spacing="4" text-anchor="middle" text-transform="uppercase">COLOR VARIATIONS</text>
+
+  <!-- Variation 1: Dark background -->
+  <g id="Var-Dark" transform="translate(200, 520)">
+    <rect x="-140" y="-70" width="280" height="140" rx="12" fill="#09090B" stroke="#27272A" stroke-width="1"/>
+
+    <!-- Mini icon -->
+    <g transform="translate(-50, -5)">
+      <circle cx="-14" cy="0" r="24" fill="none" stroke="url(#warm-grad)" stroke-width="2.5"/>
+      <circle cx="14" cy="0" r="24" fill="none" stroke="url(#cool-grad)" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="3" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Mini text -->
+    <text x="20" y="-8" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="22" font-weight="800" fill="#FAFAFA" letter-spacing="2">ABOT</text>
+    <text x="20" y="18" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="22" font-weight="800" fill="#FAFAFA" letter-spacing="2">KAMAY</text>
+
+    <text x="0" y="55" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="10" fill="#71717A" letter-spacing="2" text-anchor="middle">DARK</text>
+  </g>
+
+  <!-- Variation 2: Light background -->
+  <g id="Var-Light" transform="translate(600, 520)">
+    <rect x="-140" y="-70" width="280" height="140" rx="12" fill="#FAFAFA" stroke="#E4E4E7" stroke-width="1"/>
+
+    <!-- Mini icon -->
+    <g transform="translate(-50, -5)">
+      <circle cx="-14" cy="0" r="24" fill="none" stroke="#EA580C" stroke-width="2.5"/>
+      <circle cx="14" cy="0" r="24" fill="none" stroke="#1D4ED8" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="3" fill="#18181B"/>
+    </g>
+
+    <!-- Mini text -->
+    <text x="20" y="-8" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="22" font-weight="800" fill="#18181B" letter-spacing="2">ABOT</text>
+    <text x="20" y="18" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="22" font-weight="800" fill="#18181B" letter-spacing="2">KAMAY</text>
+
+    <text x="0" y="55" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="10" fill="#71717A" letter-spacing="2" text-anchor="middle">LIGHT</text>
+  </g>
+
+  <!-- Variation 3: Navy background -->
+  <g id="Var-Navy" transform="translate(1000, 520)">
+    <rect x="-140" y="-70" width="280" height="140" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1"/>
+
+    <!-- Mini icon -->
+    <g transform="translate(-50, -5)">
+      <circle cx="-14" cy="0" r="24" fill="none" stroke="#F97316" stroke-width="2.5"/>
+      <circle cx="14" cy="0" r="24" fill="none" stroke="#60A5FA" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="3" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Mini text -->
+    <text x="20" y="-8" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="22" font-weight="800" fill="#F1F5F9" letter-spacing="2">ABOT</text>
+    <text x="20" y="18" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="22" font-weight="800" fill="#F1F5F9" letter-spacing="2">KAMAY</text>
+
+    <text x="0" y="55" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="10" fill="#71717A" letter-spacing="2" text-anchor="middle">NAVY</text>
+  </g>
+
+  <!-- ==================== COLOR PALETTE ==================== -->
+  <text x="600" y="640" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="12" fill="#71717A" letter-spacing="4" text-anchor="middle">COLOR PALETTE</text>
+
+  <!-- Color swatches -->
+  <g transform="translate(270, 690)">
+    <rect x="0" y="-20" width="60" height="40" rx="8" fill="#F97316"/>
+    <text x="30" y="35" font-family="monospace" font-size="10" fill="#A1A1AA" text-anchor="middle">#F97316</text>
+    <text x="30" y="48" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="9" fill="#52525B" text-anchor="middle">Warm Orange</text>
+  </g>
+  <g transform="translate(370, 690)">
+    <rect x="0" y="-20" width="60" height="40" rx="8" fill="#EA580C"/>
+    <text x="30" y="35" font-family="monospace" font-size="10" fill="#A1A1AA" text-anchor="middle">#EA580C</text>
+    <text x="30" y="48" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="9" fill="#52525B" text-anchor="middle">Deep Orange</text>
+  </g>
+  <g transform="translate(470, 690)">
+    <rect x="0" y="-20" width="60" height="40" rx="8" fill="#3B82F6"/>
+    <text x="30" y="35" font-family="monospace" font-size="10" fill="#A1A1AA" text-anchor="middle">#3B82F6</text>
+    <text x="30" y="48" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="9" fill="#52525B" text-anchor="middle">Blue</text>
+  </g>
+  <g transform="translate(570, 690)">
+    <rect x="0" y="-20" width="60" height="40" rx="8" fill="#2563EB"/>
+    <text x="30" y="35" font-family="monospace" font-size="10" fill="#A1A1AA" text-anchor="middle">#2563EB</text>
+    <text x="30" y="48" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="9" fill="#52525B" text-anchor="middle">Deep Blue</text>
+  </g>
+  <g transform="translate(670, 690)">
+    <rect x="0" y="-20" width="60" height="40" rx="8" fill="#FAFAFA"/>
+    <text x="30" y="35" font-family="monospace" font-size="10" fill="#A1A1AA" text-anchor="middle">#FAFAFA</text>
+    <text x="30" y="48" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="9" fill="#52525B" text-anchor="middle">White</text>
+  </g>
+  <g transform="translate(770, 690)">
+    <rect x="0" y="-20" width="60" height="40" rx="8" fill="#09090B" stroke="#27272A" stroke-width="1"/>
+    <text x="30" y="35" font-family="monospace" font-size="10" fill="#A1A1AA" text-anchor="middle">#09090B</text>
+    <text x="30" y="48" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="9" fill="#52525B" text-anchor="middle">Black</text>
+  </g>
+
+  <!-- ==================== APP ICON MOCKUP ==================== -->
+  <g id="App-Icon" transform="translate(1100, 720)">
+    <rect x="-36" y="-36" width="72" height="72" rx="16" fill="#09090B" stroke="#27272A" stroke-width="1"/>
+    <circle cx="-10" cy="0" r="18" fill="none" stroke="url(#warm-grad)" stroke-width="2.5"/>
+    <circle cx="10" cy="0" r="18" fill="none" stroke="url(#cool-grad)" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="3" fill="#FFFFFF"/>
+    <text x="0" y="52" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="9" fill="#52525B" text-anchor="middle">APP ICON</text>
+  </g>
+
+  <!-- Brand title -->
+  <text x="600" y="50" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="14" fill="#52525B" letter-spacing="6" text-anchor="middle">ABOT KAMAY INC. — BRAND IDENTITY</text>
+
+  <!-- Concept label -->
+  <text x="600" y="130" font-family="'SF Pro Display', 'Inter', sans-serif" font-size="11" fill="#71717A" letter-spacing="3" text-anchor="middle">CONCEPT 02 — NEXUS : INTERSECTION MARK</text>
+</svg>

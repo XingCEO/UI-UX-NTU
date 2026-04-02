@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Advertiser Inquiry — Abot Kamay WiFi. Tell us about your advertising goals and find the perfect plan for your brand.">
+  <meta name="theme-color" content="#C85A38">
+  <title>Advertiser Inquiry — Abot Kamay WiFi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css?v=20260402-v1">
+  <style>
+    /* Advertiser Inquiry Form Specific Styles */
+    .inquiry-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .progress-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .progress-segment {
+      flex: 1;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      transition: background 0.3s ease;
+    }
+
+    .progress-segment.done {
+      background: var(--accent);
+    }
+
+    .progress-segment.current {
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(200, 90, 56, 0.4);
+    }
+
+    .form-step {
+      display: none;
+      animation: slideIn 0.3s ease;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-main {
+      padding: 3rem 0 5rem;
+    }
+
+    .step-indicator {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .step-title {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700;
+      color: #F1F5F9;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .step-hint {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.65;
+    }
+
+    .step-hint-tagalog {
+      display: block;
+      font-style: italic;
+      color: var(--text-muted);
+      opacity: 0.7;
+      font-size: 13px;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .options-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 20px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: var(--white);
+    }
+
+    .option-label:hover {
+      border-color: var(--accent);
+      background: rgba(232, 119, 46, 0.07);
+    }
+
+    .option-label:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .option-label input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      cursor: pointer;
+      margin-top: 3px;
+      transition: all 0.15s ease;
+      background: var(--white);
+      position: relative;
+    }
+
+    .option-label:hover input[type="radio"] {
+      border-color: var(--accent);
+    }
+
+    .option-label input[type="radio"]:checked {
+      border-color: var(--accent);
+      background: var(--accent);
+      box-shadow: inset 0 0 0 3px #0D1117;
+    }
+
+    .option-content {
+      flex: 1;
+      padding: 2px 0;
+    }
+
+    .option-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: #F1F5F9;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .option-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 6px;
+    }
+
+    .option-tagalog {
+      font-style: italic;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      opacity: 0.65;
+      line-height: 1.5;
+    }
+
+    .step-buttons {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn-secondary {
+      flex: 1;
+      padding: 15px 24px;
+      background: var(--white);
+      color: var(--text-muted);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: #F1F5F9;
+      color: #F1F5F9;
+    }
+
+    .btn-secondary:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .btn-primary {
+      flex: 1.2;
+      padding: 15px 24px;
+      background: var(--bg-dark);
+      color: #94A3B8;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background: #333;
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Contact Form Section */
+    .form-contact {
+      display: none;
+    }
+
+    .form-contact.active {
+      display: block;
+    }
+
+    .summary-section {
+      background: #161B26;
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 32px;
+      border: 1px solid #1E2A3A;
+      border-left-width: 4px;
+    }
+
+    .summary-title {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 600;
+      color: #F1F5F9;
+      margin-bottom: 12px;
+    }
+
+    .summary-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .chip {
+      display: inline-block;
+      background: var(--white);
+      color: #F1F5F9;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .tier-badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tier-badge.strong-match {
+      background: var(--accent);
+      color: #94A3B8;
+    }
+
+    .tier-badge.good-fit {
+      background: #E8D4BC;
+      color: #F1F5F9;
+    }
+
+    .tier-badge.exploring {
+      background: var(--border);
+      color: var(--text-muted);
+    }
+
+    .contact-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: #F1F5F9;
+      margin-bottom: 24px;
+      margin-top: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #F1F5F9;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-label .required {
+      color: var(--accent);
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: #F1F5F9;
+      background: var(--white);
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(200, 90, 56, 0.1);
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+      font-family: var(--font-sans);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--white);
+      margin-top: 2px;
+      position: relative;
+    }
+
+    .checkbox-group input[type="checkbox"]:hover {
+      border-color: var(--accent);
+    }
+
+    .checkbox-group input[type="checkbox"]:checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .checkbox-group input[type="checkbox"]:checked::after {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 10px;
+      border: solid var(--white);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      position: absolute;
+      top: 2px;
+      left: 6px;
+    }
+
+    .checkbox-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .checkbox-label a {
+      color: var(--accent);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .checkbox-label a:hover {
+      opacity: 0.8;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 16px;
+      background: var(--bg-dark);
+      color: #94A3B8;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 32px;
+    }
+
+    .submit-button:hover {
+      opacity: 0.9;
+    }
+
+    .submit-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Success Screen */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .success-screen.active {
+      display: block;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .success-checkmark {
+      width: 100%;
+      height: 100%;
+    }
+
+    .success-title {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: #F1F5F9;
+      margin-bottom: 16px;
+    }
+
+    .success-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .btn-restart {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--bg-dark);
+      color: #94A3B8;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-restart:hover {
+      opacity: 0.9;
+    }
+
+    /* Privacy Modal */
+    .privacy-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .privacy-modal.active {
+      display: flex;
+    }
+
+    .privacy-modal-content {
+      background: var(--white);
+      border-radius: 12px;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 32px;
+    }
+
+    .privacy-modal-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: #F1F5F9;
+      margin-bottom: 16px;
+    }
+
+    .privacy-modal-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .privacy-modal-text a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .privacy-modal-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .privacy-modal-actions button {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .privacy-modal-actions .btn-close {
+      background: var(--white);
+      color: #F1F5F9;
+    }
+
+    .privacy-modal-actions .btn-close:hover {
+      background: var(--accent-light);
+    }
+
+    .privacy-modal-actions .btn-confirm {
+      background: var(--bg-dark);
+      color: #94A3B8;
+      border-color: #F1F5F9;
+    }
+
+    .privacy-modal-actions .btn-confirm:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .section-main { padding: 2rem 0 4rem; }
+      .inquiry-container { padding: 0 16px; }
+      .option-label { padding: 16px; gap: 14px; }
+      .option-text { font-size: 14px; }
+      .option-desc { font-size: 13px; }
+    }
+
+    @media (max-width: 480px) {
+      .section-main { padding: 1.5rem 0 3rem; }
+      .inquiry-container { padding: 0 12px; }
+      .option-label { padding: 14px 12px; gap: 12px; }
+      .step-buttons { flex-direction: column-reverse; }
+      .btn-primary, .btn-secondary { flex: none; }
+      .form-row { grid-template-columns: 1fr;
+      }
+
+      .privacy-modal-content {
+        padding: 20px;
+      }
+
+      .privacy-modal-actions {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .form-step,
+      .option-label,
+      .form-input,
+      .btn-primary,
+      .btn-secondary {
+        animation: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Marquee Banner -->
+<div id="marquee-banner" class="marquee-banner" role="banner" aria-label="Announcement">
+  <div class="marquee-track marquee-track--scroll"><span class="marquee-inner">Loading…</span></div>
+  <button id="marquee-close" class="marquee-close" aria-label="Close announcement">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+</div>
+
+<!-- Navigation -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo" aria-label="Abot Kamay WiFi Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="160" height="auto">
+  <defs>
+    <linearGradient id="nv-warm" x1="0%" y1="20%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#F5923A"/><stop offset="40%" stop-color="#E8772E"/><stop offset="100%" stop-color="#C05E1C"/>
+    </linearGradient>
+    <linearGradient id="nv-cool" x1="100%" y1="0%" x2="20%" y2="100%">
+      <stop offset="0%" stop-color="#5B9BF5"/><stop offset="40%" stop-color="#2D6FE8"/><stop offset="100%" stop-color="#1B4FBF"/>
+    </linearGradient>
+    <linearGradient id="nv-ix" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8772E" stop-opacity="0.35"/><stop offset="50%" stop-color="#8B5CF6" stop-opacity="0.25"/><stop offset="100%" stop-color="#2D6FE8" stop-opacity="0.35"/>
+    </linearGradient>
+    <radialGradient id="nv-beacon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/><stop offset="30%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#E0E7FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#B4C6EE" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="nv-cr"><circle cx="120" cy="100" r="62"/></clipPath>
+    <filter id="nv-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+  </defs>
+  <circle cx="82" cy="100" r="62" fill="none" stroke="url(#nv-warm)" stroke-width="6"/>
+  <circle cx="120" cy="100" r="62" fill="none" stroke="url(#nv-cool)" stroke-width="6"/>
+  <circle cx="82" cy="100" r="60" fill="url(#nv-ix)" clip-path="url(#nv-cr)" opacity="0.8"/>
+  <circle cx="100" cy="100" r="18" fill="url(#nv-beacon)" filter="url(#nv-glow)" opacity="0.6"/>
+  <circle cx="100" cy="100" r="10" fill="url(#nv-beacon)"/>
+  <circle cx="100" cy="100" r="5" fill="#FFFFFF"/>
+  <circle cx="100" cy="100" r="17" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+  <circle cx="100" cy="100" r="27" fill="none" stroke="#FFFFFF" stroke-width="0.7" opacity="0.1"/>
+  <circle cx="100" cy="100" r="37" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.05"/>
+  <text x="210" y="78" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="58" font-weight="900" fill="#E2E8F0" letter-spacing="2">ABOT</text>
+  <text x="210" y="138" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="58" font-weight="900" fill="#E2E8F0" letter-spacing="2">KAMAY</text>
+  <text x="213" y="164" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="12" font-weight="600" fill="#C05E1C" letter-spacing="10">WITHIN REACH</text>
+</svg>
+      </a>
+      <ul id="nav-links" class="nav-links" role="list">
+        <li><a href="/index.html" class="nav-link" data-page="index.html" data-i18n="nav.home"></a></li>
+        <li><a href="/advertisers.html" class="nav-link" data-page="advertisers.html" data-i18n="nav.advertisers"></a></li>
+        <li><a href="/venues.html" class="nav-link" data-page="venues.html" data-i18n="nav.venues"></a></li>
+        <li><a href="/about.html" class="nav-link" data-page="about.html" data-i18n="nav.about"></a></li>
+        <li><a href="/contact.html" class="nav-link" data-page="contact.html" data-i18n="nav.contact"></a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="lang-switcher" role="group" aria-label="Language selector">
+          <button class="lang-btn" data-lang="zh">ZH</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="tl">TL</button>
+        </div>
+        <a href="/contact.html" class="nav-cta" data-i18n="nav.getStarted"></a>
+      </div>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="container">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb" role="list">
+        <li><a href="/index.html" data-i18n="nav.home"></a></li>
+        <li class="breadcrumb-sep" aria-hidden="true">/</li>
+        <li><a href="/advertisers.html" data-i18n="nav.advertisers"></a></li>
+        <li class="breadcrumb-sep" aria-hidden="true">/</li>
+        <li aria-current="page" data-i18n="inquiryPage.breadcrumb"></li>
+      </ol>
+    </nav>
+    <h1 id="page-title" data-i18n="inquiryPage.title"></h1>
+    <p data-i18n="inquiryPage.subtitle"></p>
+  </div>
+</section>
+
+  <!-- Main Content -->
+  <main class="section-main">
+    <div class="inquiry-container">
+      <!-- Quiz Section -->
+      <div id="quiz-section" class="quiz-section">
+        <!-- Progress Bar -->
+        <div class="progress-bar" aria-label="Progress indicator">
+          <div class="progress-segment current" data-step="1"></div>
+          <div class="progress-segment" data-step="2"></div>
+          <div class="progress-segment" data-step="3"></div>
+          <div class="progress-segment" data-step="4"></div>
+        </div>
+
+        <!-- Step 1: Advertising Goal -->
+        <div class="form-step active" data-step="1">
+          <div class="step-indicator" id="step-ind-1">Step 1 of 4</div>
+          <h2 class="step-title" data-i18n="inquiryPage.goal.title">What's your primary advertising goal?</h2>
+          <p class="step-hint" data-i18n="inquiryPage.goal.hint">Choose the objective that aligns with your campaign</p>
+          <p class="step-hint-tagalog" data-i18n="inquiryPage.goal.hintTl"></p>
+
+          <div class="options-group">
+            <label class="option-label">
+              <input type="radio" name="goal" value="brand-awareness">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.goal.option1">Build Brand Awareness</div>
+                <div class="option-desc" data-i18n="inquiryPage.goal.option1Desc">Reach more people in the Philippines</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.goal.option1Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="goal" value="drive-traffic">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.goal.option2">Drive Website or App Traffic</div>
+                <div class="option-desc" data-i18n="inquiryPage.goal.option2Desc">Get more visits and conversions</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.goal.option2Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="goal" value="product-launch">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.goal.option3">Product Launch or Promotion</div>
+                <div class="option-desc" data-i18n="inquiryPage.goal.option3Desc">Announce a new product or special offer</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.goal.option3Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="goal" value="engagement">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.goal.option4">Increase Customer Engagement</div>
+                <div class="option-desc" data-i18n="inquiryPage.goal.option4Desc">Build community and loyalty</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.goal.option4Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="goal" value="other">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.goal.option5">Other</div>
+                <div class="option-desc" data-i18n="inquiryPage.goal.option5Desc">Tell us more in the contact form</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.goal.option5Tl"></div>
+              </div>
+            </label>
+          </div>
+
+          <div class="step-buttons">
+            <button class="btn-secondary" disabled data-i18n="inquiryPage.back">Back</button>
+            <button class="btn-primary" id="next-1" data-i18n="inquiryPage.next">Next</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Target Audience -->
+        <div class="form-step" data-step="2">
+          <div class="step-indicator" id="step-ind-2">Step 2 of 4</div>
+          <h2 class="step-title" data-i18n="inquiryPage.audience.title">Who is your target audience?</h2>
+          <p class="step-hint" data-i18n="inquiryPage.audience.hint">Select your primary demographic</p>
+          <p class="step-hint-tagalog" data-i18n="inquiryPage.audience.hintTl"></p>
+
+          <div class="options-group">
+            <label class="option-label">
+              <input type="radio" name="audience" value="students">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.audience.option1">Students & Young Professionals</div>
+                <div class="option-desc" data-i18n="inquiryPage.audience.option1Desc">Ages 15-30 in urban areas</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.audience.option1Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="audience" value="professionals">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.audience.option2">Working Professionals</div>
+                <div class="option-desc" data-i18n="inquiryPage.audience.option2Desc">Ages 30-50 with higher income</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.audience.option2Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="audience" value="families">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.audience.option3">Families</div>
+                <div class="option-desc" data-i18n="inquiryPage.audience.option3Desc">All ages, households with children</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.audience.option3Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="audience" value="all-ages">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.audience.option4">All Ages</div>
+                <div class="option-desc" data-i18n="inquiryPage.audience.option4Desc">Mass market, no specific demographic</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.audience.option4Tl"></div>
+              </div>
+            </label>
+          </div>
+
+          <div class="step-buttons">
+            <button class="btn-secondary" id="back-2" data-i18n="inquiryPage.back">Back</button>
+            <button class="btn-primary" id="next-2" data-i18n="inquiryPage.next">Next</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Budget -->
+        <div class="form-step" data-step="3">
+          <div class="step-indicator" id="step-ind-3">Step 3 of 4</div>
+          <h2 class="step-title" data-i18n="inquiryPage.budget.title">What's your monthly budget?</h2>
+          <p class="step-hint" data-i18n="inquiryPage.budget.hint">Minimum starting budget is PHP 5,000</p>
+          <p class="step-hint-tagalog" data-i18n="inquiryPage.budget.hintTl"></p>
+
+          <div class="options-group">
+            <label class="option-label">
+              <input type="radio" name="budget" value="30k-plus">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.budget.option1">PHP 30,000+</div>
+                <div class="option-desc" data-i18n="inquiryPage.budget.option1Desc">Premium tier - maximum reach and frequency</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.budget.option1Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="budget" value="15k-29k">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.budget.option2">PHP 15,000 - 29,999</div>
+                <div class="option-desc" data-i18n="inquiryPage.budget.option2Desc">Standard tier - good coverage across locations</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.budget.option2Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="budget" value="5k-14k">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.budget.option3">PHP 5,000 - 14,999</div>
+                <div class="option-desc" data-i18n="inquiryPage.budget.option3Desc">Starter tier - focused campaigns</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.budget.option3Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="budget" value="not-decided">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.budget.option4">Not decided yet</div>
+                <div class="option-desc" data-i18n="inquiryPage.budget.option4Desc">We'll discuss in detail during consultation</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.budget.option4Tl"></div>
+              </div>
+            </label>
+          </div>
+
+          <div class="step-buttons">
+            <button class="btn-secondary" id="back-3" data-i18n="inquiryPage.back">Back</button>
+            <button class="btn-primary" id="next-3" data-i18n="inquiryPage.next">Next</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Timeline -->
+        <div class="form-step" data-step="4">
+          <div class="step-indicator" id="step-ind-4">Step 4 of 4</div>
+          <h2 class="step-title" data-i18n="inquiryPage.timeline.title">When do you want to launch?</h2>
+          <p class="step-hint" data-i18n="inquiryPage.timeline.hint">Select your preferred campaign start date</p>
+          <p class="step-hint-tagalog" data-i18n="inquiryPage.timeline.hintTl"></p>
+
+          <div class="options-group">
+            <label class="option-label">
+              <input type="radio" name="timeline" value="asap">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.timeline.option1">ASAP (This Week)</div>
+                <div class="option-desc" data-i18n="inquiryPage.timeline.option1Desc">We can launch within 3-5 business days</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.timeline.option1Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="timeline" value="2-weeks">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.timeline.option2">In 2 Weeks</div>
+                <div class="option-desc" data-i18n="inquiryPage.timeline.option2Desc">Planned for mid-month launch</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.timeline.option2Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="timeline" value="month">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.timeline.option3">In 1 Month</div>
+                <div class="option-desc" data-i18n="inquiryPage.timeline.option3Desc">Next month or specific date</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.timeline.option3Tl"></div>
+              </div>
+            </label>
+
+            <label class="option-label">
+              <input type="radio" name="timeline" value="exploring">
+              <div class="option-content">
+                <div class="option-text" data-i18n="inquiryPage.timeline.option4">Still Exploring</div>
+                <div class="option-desc" data-i18n="inquiryPage.timeline.option4Desc">Just gathering information right now</div>
+                <div class="option-tagalog" data-i18n="inquiryPage.timeline.option4Tl"></div>
+              </div>
+            </label>
+          </div>
+
+          <div class="step-buttons">
+            <button class="btn-secondary" id="back-4" data-i18n="inquiryPage.back">Back</button>
+            <button class="btn-primary" id="to-contact" data-i18n="inquiryPage.toContact">Continue to Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form Section -->
+      <div id="contact-section" class="form-contact">
+        <div class="summary-section">
+          <div class="summary-title" data-i18n="inquiryPage.contact.summaryTitle">Your Campaign Profile</div>
+          <div class="summary-chips">
+            <span class="chip" id="summary-goal">-</span>
+            <span class="chip" id="summary-audience">-</span>
+            <span class="chip" id="summary-budget">-</span>
+            <span class="chip" id="summary-timeline">-</span>
+          </div>
+        </div>
+
+        <h2 class="contact-title" data-i18n="inquiryPage.contact.title">Share Your Contact Information</h2>
+
+        <form id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" data-i18n="inquiryPage.contact.company"><span class="required">*</span> Company Name</label>
+              <input type="text" class="form-input" id="company" name="company" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="inquiryPage.contact.category">Category</label>
+              <select class="form-select" id="category" name="category">
+                <option value="">Select a category</option>
+                <option value="retail" data-i18n="inquiryPage.contact.categoryRetail">Retail / E-commerce</option>
+                <option value="services" data-i18n="inquiryPage.contact.categoryServices">Services</option>
+                <option value="technology" data-i18n="inquiryPage.contact.categoryTech">Technology</option>
+                <option value="food" data-i18n="inquiryPage.contact.categoryFood">Food & Beverage</option>
+                <option value="education" data-i18n="inquiryPage.contact.categoryEdu">Education</option>
+                <option value="finance" data-i18n="inquiryPage.contact.categoryFinance">Finance</option>
+                <option value="healthcare" data-i18n="inquiryPage.contact.categoryHealth">Healthcare</option>
+                <option value="other" data-i18n="inquiryPage.contact.categoryOther">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" data-i18n="inquiryPage.contact.name"><span class="required">*</span> Contact Name</label>
+              <input type="text" class="form-input" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="inquiryPage.contact.email">Email</label>
+              <input type="email" class="form-input" id="email" name="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="inquiryPage.contact.mobile"><span class="required">*</span> Mobile / WhatsApp</label>
+            <input type="tel" class="form-input" id="mobile" name="mobile" placeholder="+63 9XX XXX XXXX" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="inquiryPage.contact.notes">Additional Notes</label>
+            <textarea class="form-textarea" id="notes" name="notes" placeholder="Tell us anything else about your campaign..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox-group">
+              <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+              <label class="checkbox-label" for="privacy-consent">
+                <span data-i18n="inquiryPage.contact.privacyConsent">I agree to the <a onclick="openPrivacyModal(); return false;" role="button">Privacy Policy</a> and <a href="/terms-of-service.html" target="_blank">Terms of Service</a></span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-button" id="submit-inquiry" data-i18n="inquiryPage.contact.submit">Submit Inquiry</button>
+        </form>
+
+        <div class="step-buttons" style="margin-top: 20px;">
+          <button class="btn-secondary" id="back-contact" data-i18n="inquiryPage.back">Back to Quiz</button>
+        </div>
+      </div>
+
+      <!-- Success Screen -->
+      <div id="success-screen" class="success-screen">
+        <div class="success-icon">
+          <svg class="success-checkmark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="none" stroke="#C85A38" stroke-width="3"/>
+            <path d="M 35 50 L 45 60 L 65 40" fill="none" stroke="#C85A38" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="success-title" data-i18n="inquiryPage.success.title">Inquiry Submitted!</h2>
+        <p class="success-desc" data-i18n="inquiryPage.success.desc">Thank you for your interest. Our team will review your inquiry and get back to you as soon as possible.</p>
+        <button class="btn-restart" id="restart-inquiry" data-i18n="inquiryPage.success.restart">Start Over</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Privacy Modal -->
+  <div id="privacy-modal" class="privacy-modal">
+    <div class="privacy-modal-content">
+      <h3 class="privacy-modal-title" data-i18n="inquiryPage.privacy.title">Privacy & Data Protection</h3>
+      <div class="privacy-modal-text">
+        <p data-i18n="inquiryPage.privacy.intro">At Abot Kamay WiFi, we take your privacy seriously. Your personal information will be used only to:</p>
+        <ul style="margin: 12px 0 12px 16px; line-height: 1.8;">
+          <li data-i18n="inquiryPage.privacy.use1">Process your inquiry</li>
+          <li data-i18n="inquiryPage.privacy.use2">Contact you about advertising opportunities</li>
+          <li data-i18n="inquiryPage.privacy.use3">Send you relevant updates (with your consent)</li>
+        </ul>
+        <p data-i18n="inquiryPage.privacy.retention">We comply with Philippine Data Privacy Act (RA 10173). Your data will be securely stored and deleted upon request.</p>
+        <p data-i18n="inquiryPage.privacy.contact">For questions, contact us at <strong>Founder@abotkamay.net</strong></p>
+        <p data-i18n="inquiryPage.privacy.full">See our full <a href="/privacy-policy.html" target="_blank">Privacy Policy</a> for more details.</p>
+      </div>
+      <div class="privacy-modal-actions">
+        <button class="btn-close" id="close-privacy" data-i18n="inquiryPage.privacy.close">Close</button>
+        <button class="btn-confirm" id="confirm-privacy" data-i18n="inquiryPage.privacy.understand">I Understand</button>
+      </div>
+    </div>
+  </div>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="200" height="auto">
+  <defs>
+    <linearGradient id="nf-warm" x1="0%" y1="20%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#F5923A"/><stop offset="40%" stop-color="#E8772E"/><stop offset="100%" stop-color="#C05E1C"/>
+    </linearGradient>
+    <linearGradient id="nf-cool" x1="100%" y1="0%" x2="20%" y2="100%">
+      <stop offset="0%" stop-color="#5B9BF5"/><stop offset="40%" stop-color="#2D6FE8"/><stop offset="100%" stop-color="#1B4FBF"/>
+    </linearGradient>
+    <linearGradient id="nf-ix" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8772E" stop-opacity="0.35"/><stop offset="50%" stop-color="#8B5CF6" stop-opacity="0.25"/><stop offset="100%" stop-color="#2D6FE8" stop-opacity="0.35"/>
+    </linearGradient>
+    <radialGradient id="nf-beacon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/><stop offset="30%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#E0E7FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#B4C6EE" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="nf-cr"><circle cx="120" cy="100" r="62"/></clipPath>
+    <filter id="nf-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+  </defs>
+  <circle cx="82" cy="100" r="62" fill="none" stroke="url(#nf-warm)" stroke-width="5.5"/>
+  <circle cx="120" cy="100" r="62" fill="none" stroke="url(#nf-cool)" stroke-width="5.5"/>
+  <circle cx="82" cy="100" r="60" fill="url(#nf-ix)" clip-path="url(#nf-cr)" opacity="0.8"/>
+  <circle cx="100" cy="100" r="18" fill="url(#nf-beacon)" filter="url(#nf-glow)" opacity="0.6"/>
+  <circle cx="100" cy="100" r="10" fill="url(#nf-beacon)"/>
+  <circle cx="100" cy="100" r="5" fill="#FFFFFF"/>
+  <circle cx="100" cy="100" r="17" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+  <circle cx="100" cy="100" r="27" fill="none" stroke="#FFFFFF" stroke-width="0.7" opacity="0.1"/>
+  <text x="210" y="78" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="58" font-weight="900" fill="#E2E8F0" letter-spacing="2">ABOT</text>
+  <text x="210" y="138" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="58" font-weight="900" fill="#E2E8F0" letter-spacing="2">KAMAY</text>
+  <text x="213" y="164" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="12" font-weight="600" fill="#E8772E" letter-spacing="10">WITHIN REACH</text>
+</svg>
+        </div>
+        <p class="footer-brand-desc" data-i18n="footer.desc"></p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-btn" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3H8.5C7.67 3 7 3.67 7 4.5V6H5v2h2v5h2V8h1.5L11 6H9V4.5c0-.28.22-.5.5-.5H11V3z" fill="currentColor"/></svg></a>
+          <a href="#" class="footer-social-btn" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM2 5h2v7H2V5zm4 0h2v1c.3-.5 1-1 2-1 2 0 3 1.3 3 3.5V12h-2V8.8c0-1.1-.4-1.8-1.3-1.8s-1.7.7-1.7 1.8V12H6V5z" fill="currentColor"/></svg></a>
+          <a href="#" class="footer-social-btn" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="3" width="10" height="10" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2.5" stroke="currentColor" stroke-width="1.2"/><circle cx="11.5" cy="4.5" r="0.75" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer.colPages"></div>
+        <ul class="footer-links" role="list">
+          <li><a href="/index.html" class="footer-link" data-i18n="nav.home"></a></li>
+          <li><a href="/advertisers.html" class="footer-link" data-i18n="nav.advertisers"></a></li>
+          <li><a href="/venues.html" class="footer-link" data-i18n="nav.venues"></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer.colCompany"></div>
+        <ul class="footer-links" role="list">
+          <li><a href="/about.html" class="footer-link" data-i18n="nav.about"></a></li>
+          <li><a href="/contact.html" class="footer-link" data-i18n="nav.contact"></a></li>
+          <li><a href="/privacy-policy.html" class="footer-link" data-i18n="footer.privacy"></a></li>
+          <li><a href="/terms-of-service.html" class="footer-link" data-i18n="footer.terms"></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer.colContact"></div>
+        <ul class="footer-links" role="list">
+          <li><a href="mailto:Founder@abotkamay.net" class="footer-link">Founder@abotkamay.net</a></li>
+          <li><span class="footer-link" data-config-phone>+63 XXX XXX XXXX</span></li>
+          <li><span class="footer-link" data-config-address>Metro Manila, Philippines</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright" data-i18n="footer.copyright"></p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html" class="footer-bottom-link" data-i18n="footer.privacy"></a>
+        <a href="/terms-of-service.html" class="footer-bottom-link" data-i18n="footer.terms"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/i18n.js?v=20260321-lowmonthly3"></script>
+<script src="/js/main.js?v=20260321-lowmonthly3"></script>
+
+  <script>
+    // Bridge to i18n — AKI18n is exposed by /js/i18n.js
+    function t(key) {
+      return (typeof AKI18n !== 'undefined' && AKI18n.t) ? AKI18n.t(key) : key;
+    }
+    function applyI18n() {
+      if (typeof AKI18n !== 'undefined' && AKI18n.applyI18n) AKI18n.applyI18n();
+    }
+
+    // Inquiry Form State
+    let quizState = {
+      goal: null,
+      audience: null,
+      budget: null,
+      timeline: null
+    };
+
+    const goalLabels = {
+      'brand-awareness': 'inquiryPage.goal.option1',
+      'drive-traffic': 'inquiryPage.goal.option2',
+      'product-launch': 'inquiryPage.goal.option3',
+      'engagement': 'inquiryPage.goal.option4',
+      'other': 'inquiryPage.goal.option5'
+    };
+
+    const audienceLabels = {
+      'students': 'inquiryPage.audience.option1',
+      'professionals': 'inquiryPage.audience.option2',
+      'families': 'inquiryPage.audience.option3',
+      'all-ages': 'inquiryPage.audience.option4'
+    };
+
+    const budgetLabels = {
+      '30k-plus': 'inquiryPage.budget.option1',
+      '15k-29k': 'inquiryPage.budget.option2',
+      '5k-14k': 'inquiryPage.budget.option3',
+      'not-decided': 'inquiryPage.budget.option4'
+    };
+
+    const timelineLabels = {
+      'asap': 'inquiryPage.timeline.option1',
+      '2-weeks': 'inquiryPage.timeline.option2',
+      'month': 'inquiryPage.timeline.option3',
+      'exploring': 'inquiryPage.timeline.option4'
+    };
+
+    // Initialize form
+    function initForm() {
+      // Navigation buttons
+      document.getElementById('next-1').addEventListener('click', () => goNext(1));
+      document.getElementById('next-2').addEventListener('click', () => goNext(2));
+      document.getElementById('next-3').addEventListener('click', () => goNext(3));
+      document.getElementById('to-contact').addEventListener('click', goToContact);
+
+      document.getElementById('back-2').addEventListener('click', () => goBack(2));
+      document.getElementById('back-3').addEventListener('click', () => goBack(3));
+      document.getElementById('back-4').addEventListener('click', () => goBack(4));
+      document.getElementById('back-contact').addEventListener('click', () => goBackFromContact());
+
+      // Contact form
+      document.getElementById('contact-form').addEventListener('submit', doSubmit);
+      document.getElementById('restart-inquiry').addEventListener('click', restart);
+
+      // Privacy modal
+      document.getElementById('close-privacy').addEventListener('click', closePrivacyModal);
+      document.getElementById('confirm-privacy').addEventListener('click', closePrivacyModal);
+
+      // Apply initial i18n
+      applyI18n();
+
+      // Update step indicators
+      updateStepIndicators();
+    }
+
+    function updateProgressBar(step) {
+      document.querySelectorAll('.progress-segment').forEach((seg, idx) => {
+        const segStep = idx + 1;
+        seg.classList.remove('done', 'current');
+        if (segStep < step) {
+          seg.classList.add('done');
+        } else if (segStep === step) {
+          seg.classList.add('current');
+        }
+      });
+    }
+
+    function showStep(step) {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+      updateProgressBar(step);
+      updateStepIndicators();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateStepIndicators() {
+      var ofText = t('inquiryPage.stepOf') || 'of';
+      for (var i = 1; i <= 4; i++) {
+        var el = document.getElementById('step-ind-' + i);
+        if (el) el.textContent = 'Step ' + i + ' ' + ofText + ' 4';
+      }
+    }
+
+    function goNext(currentStep) {
+      const nextStep = currentStep + 1;
+
+      // Validate current step
+      if (currentStep === 1) {
+        quizState.goal = document.querySelector('input[name="goal"]:checked')?.value;
+        if (!quizState.goal) return;
+      } else if (currentStep === 2) {
+        quizState.audience = document.querySelector('input[name="audience"]:checked')?.value;
+        if (!quizState.audience) return;
+      } else if (currentStep === 3) {
+        quizState.budget = document.querySelector('input[name="budget"]:checked')?.value;
+        if (!quizState.budget) return;
+      }
+
+      showStep(nextStep);
+    }
+
+    function goBack(currentStep) {
+      showStep(currentStep - 1);
+    }
+
+    function goToContact() {
+      quizState.timeline = document.querySelector('input[name="timeline"]:checked')?.value;
+      if (!quizState.timeline) return;
+
+      // Hide quiz, show contact form
+      document.getElementById('quiz-section').style.display = 'none';
+      document.getElementById('contact-section').classList.add('active');
+
+      // Update summary
+      updateSummary();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      applyI18n();
+    }
+
+    function goBackFromContact() {
+      document.getElementById('contact-section').classList.remove('active');
+      document.getElementById('quiz-section').style.display = 'block';
+      showStep(4);
+    }
+
+    function updateSummary() {
+      const goalText = t(goalLabels[quizState.goal]) || quizState.goal;
+      const audienceText = t(audienceLabels[quizState.audience]) || quizState.audience;
+      const budgetText = t(budgetLabels[quizState.budget]) || quizState.budget;
+      const timelineText = t(timelineLabels[quizState.timeline]) || quizState.timeline;
+
+      document.getElementById('summary-goal').textContent = goalText;
+      document.getElementById('summary-audience').textContent = audienceText;
+      document.getElementById('summary-budget').textContent = budgetText;
+      document.getElementById('summary-timeline').textContent = timelineText;
+
+    }
+
+    // Tier calculation — not shown to user, included in submission data for internal use
+    function calculateTier() {
+      var scores = { '30k-plus': 3, '15k-29k': 2, '5k-14k': 1, 'not-decided': 0 };
+      var urgency = { 'asap': 2, '2-weeks': 2, 'month': 1, 'exploring': 0 };
+      var s = (scores[quizState.budget] || 0) + (urgency[quizState.timeline] || 0);
+      if (s >= 4) return 'strong-match';
+      if (s >= 2) return 'good-fit';
+      return 'exploring';
+    }
+
+    async function doSubmit(e) {
+      e.preventDefault();
+
+      const company = document.getElementById('company').value.trim();
+      const name = document.getElementById('name').value.trim();
+      const mobile = document.getElementById('mobile').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const category = document.getElementById('category').value;
+      const notes = document.getElementById('notes').value.trim();
+      const privacyConsent = document.getElementById('privacy-consent').checked;
+
+      if (!company || !name || !mobile || !privacyConsent) {
+        alert(t('inquiryPage.contact.requiredFields') || 'Please fill in all required fields and accept privacy policy');
+        return;
+      }
+
+      // Prepare submission data (tier is for internal prioritisation only)
+      const submissionData = {
+        goal: quizState.goal,
+        audience: quizState.audience,
+        budget: quizState.budget,
+        timeline: quizState.timeline,
+        tier: calculateTier(),
+        company,
+        name,
+        mobile,
+        email,
+        category,
+        notes,
+        privacyConsent,
+        submittedAt: new Date().toISOString()
+      };
+
+      try {
+        // Store in localStorage as fallback
+        localStorage.setItem('lastInquiry', JSON.stringify(submissionData));
+
+        // Try to send to backend (optional endpoint)
+        const endpoint = window.config?.apiBaseUrl ? `${window.config.apiBaseUrl}/api/advertiser-inquiry` : null;
+        if (endpoint) {
+          try {
+            const response = await fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(submissionData)
+            });
+            // Don't block success if API fails
+          } catch (err) {
+            console.warn('API submission failed, data stored locally:', err);
+          }
+        }
+
+        // Show success screen
+        document.getElementById('contact-section').classList.remove('active');
+        document.getElementById('success-screen').classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        if (typeof applyI18n === 'function') {
+          applyI18n();
+        }
+      } catch (err) {
+        console.error('Submission error:', err);
+        alert(t('inquiryPage.contact.error') || 'An error occurred. Please try again.');
+      }
+    }
+
+    function restart() {
+      // Reset form
+      quizState = { goal: null, audience: null, budget: null, timeline: null };
+      document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+      document.getElementById('contact-form').reset();
+      document.getElementById('privacy-consent').checked = false;
+
+      // Reset UI
+      document.getElementById('success-screen').classList.remove('active');
+      document.getElementById('contact-section').classList.remove('active');
+      document.getElementById('quiz-section').style.display = 'block';
+      showStep(1);
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openPrivacyModal() {
+      document.getElementById('privacy-modal').classList.add('active');
+    }
+
+    function closePrivacyModal() {
+      document.getElementById('privacy-modal').classList.remove('active');
+    }
+
+    // Close modal on backdrop click
+    document.getElementById('privacy-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'privacy-modal') {
+        closePrivacyModal();
+      }
+    });
+
+    // Initialize when ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initForm);
+    } else {
+      initForm();
+    }
+
+    // Re-apply i18n when language changes
+    window.onLangChange = function() {
+      applyI18n();
+      updateStepIndicators();
+      // Only update summary if contact section is visible
+      if (document.getElementById('contact-section').classList.contains('active')) {
+        updateSummary();
+      }
+    };
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="/js/animations.js"></script>
+
+</body>
+</html>
+
+
+

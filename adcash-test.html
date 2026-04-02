@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adcash Ad Test — Abot Kamay WiFi</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  background: #FAF9F6;
+  color: #1A1A1A;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.wrap {
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #9B9590;
+  font-size: .75rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+h1 {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.sub {
+  font-size: .9rem;
+  color: #6B6564;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+.btn {
+  display: inline-block;
+  background: #1A1A1A;
+  color: #fff;
+  border: none;
+  padding: 14px 36px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .2s;
+  margin-bottom: 16px;
+}
+.btn:hover { background: #333; }
+.btn:disabled { background: #ccc; cursor: not-allowed; }
+.btn--accent { background: #C85A38; }
+.btn--accent:hover { background: #b04e30; }
+.log {
+  margin-top: 32px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #E5E0DB;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'Fira Code', Consolas, monospace;
+  font-size: .8rem;
+  color: #6B6564;
+  max-height: 300px;
+  overflow-y: auto;
+  line-height: 1.8;
+}
+.log-entry { border-bottom: 1px solid #f0eeeb; padding: 4px 0; }
+.log-entry:last-child { border-bottom: none; }
+.log-ok { color: #2d7d46; }
+.log-warn { color: #d97706; }
+.log-err { color: #c0392b; }
+.info-card {
+  margin-top: 24px;
+  background: #fff;
+  border: 1px solid #E5E0DB;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: left;
+  font-size: .85rem;
+  color: #6B6564;
+  line-height: 1.7;
+}
+.info-card strong { color: #1A1A1A; }
+.badge {
+  display: inline-block;
+  background: #1A1A1A;
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: .04em;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#C85A38" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="#C85A38"/></svg>
+    Abot Kamay WiFi — Ad Test
+  </div>
+
+  <h1>Adcash Interstitial Test</h1>
+  <p class="sub">點擊按鈕觸發 Adcash Interstitial 廣告（Zone ID: 11097198）</p>
+
+  <button class="btn btn--accent" id="btn-load" onclick="loadAdcash()">
+    1. 載入 Adcash Script
+  </button>
+  <br>
+  <button class="btn" id="btn-trigger" onclick="triggerAd()" disabled>
+    2. 觸發 Interstitial 廣告
+  </button>
+
+  <div class="info-card">
+    <strong>Zone ID:</strong> <span class="badge">11097198</span><br>
+    <strong>Website ID:</strong> 1592374<br>
+    <strong>Format:</strong> Interstitial（全螢幕插頁）<br>
+    <strong>Script:</strong> //acscdn.com/script/aclib.js<br>
+    <strong>Note:</strong> 新建的 Zone 可能需要幾分鐘到幾小時才有廣告填充（fill rate）。如果觸發後沒有廣告跳出，屬於正常現象，Adcash 需要時間配對廣告主。
+  </div>
+
+  <div class="log" id="log"></div>
+</div>
+
+<script>
+var logEl = document.getElementById('log');
+var btnLoad = document.getElementById('btn-load');
+var btnTrigger = document.getElementById('btn-trigger');
+
+function log(msg, type) {
+  var cls = type === 'ok' ? 'log-ok' : type === 'warn' ? 'log-warn' : type === 'err' ? 'log-err' : '';
+  var time = new Date().toLocaleTimeString('en-PH');
+  var div = document.createElement('div');
+  div.className = 'log-entry ' + cls;
+  div.textContent = '[' + time + '] ' + msg;
+  logEl.appendChild(div);
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+log('Ready. Click "載入 Adcash Script" to begin.');
+
+function loadAdcash() {
+  btnLoad.disabled = true;
+  btnLoad.textContent = 'Loading...';
+  log('Loading aclib.js from //acscdn.com/script/aclib.js ...', 'warn');
+
+  var script = document.createElement('script');
+  script.id = 'aclib';
+  script.type = 'text/javascript';
+  script.src = '//acscdn.com/script/aclib.js';
+
+  script.onload = function() {
+    log('aclib.js loaded successfully!', 'ok');
+    if (window.aclib) {
+      log('window.aclib available: ' + Object.keys(window.aclib).join(', '), 'ok');
+      if (typeof window.aclib.runInterstitial === 'function') {
+        log('runInterstitial() function found — ready to trigger ad', 'ok');
+        btnTrigger.disabled = false;
+        btnLoad.textContent = 'Script Loaded';
+      } else {
+        log('runInterstitial not found in aclib object', 'err');
+      }
+    } else {
+      log('window.aclib is undefined after script load', 'err');
+    }
+  };
+
+  script.onerror = function(e) {
+    log('Failed to load aclib.js — check network / ad blocker', 'err');
+    btnLoad.disabled = false;
+    btnLoad.textContent = '1. 載入 Adcash Script (retry)';
+  };
+
+  document.head.appendChild(script);
+}
+
+function triggerAd() {
+  if (!window.aclib || typeof window.aclib.runInterstitial !== 'function') {
+    log('aclib not ready — load script first', 'err');
+    return;
+  }
+
+  log('Calling aclib.runInterstitial({ zoneId: "11097198" }) ...', 'warn');
+  btnTrigger.textContent = 'Triggering...';
+
+  try {
+    window.aclib.runInterstitial({
+      zoneId: '11097198',
+      onOpened: function() {
+        log('AD OPENED — Interstitial is showing!', 'ok');
+      },
+      onClosed: function() {
+        log('AD CLOSED — user dismissed the ad', 'ok');
+        btnTrigger.disabled = false;
+        btnTrigger.textContent = '2. 觸發 Interstitial 廣告 (again)';
+      },
+      onError: function(err) {
+        log('AD ERROR: ' + (err && err.message ? err.message : JSON.stringify(err)), 'err');
+        btnTrigger.disabled = false;
+        btnTrigger.textContent = '2. 觸發 Interstitial 廣告 (retry)';
+      },
+      onNoad: function() {
+        log('NO AD available — Zone too new or no fill. Try again later.', 'warn');
+        btnTrigger.disabled = false;
+        btnTrigger.textContent = '2. 觸發 Interstitial 廣告 (retry)';
+      }
+    });
+  } catch(e) {
+    log('Exception: ' + e.message, 'err');
+    btnTrigger.disabled = false;
+    btnTrigger.textContent = '2. 觸發 Interstitial 廣告 (retry)';
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="/js/animations.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="480" height="480">
+  <defs>
+    <linearGradient id="warm" x1="0%" y1="20%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#F5923A"/>
+      <stop offset="40%" stop-color="#E8772E"/>
+      <stop offset="100%" stop-color="#C05E1C"/>
+    </linearGradient>
+    <linearGradient id="cool" x1="100%" y1="0%" x2="20%" y2="100%">
+      <stop offset="0%" stop-color="#5B9BF5"/>
+      <stop offset="40%" stop-color="#2D6FE8"/>
+      <stop offset="100%" stop-color="#1B4FBF"/>
+    </linearGradient>
+    <linearGradient id="ix" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8772E" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#8B5CF6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#2D6FE8" stop-opacity="0.35"/>
+    </linearGradient>
+    <radialGradient id="beacon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#E0E7FF" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#B4C6EE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="cr"><circle cx="140" cy="120" r="72"/></clipPath>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+    <filter id="softglow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <!-- Subtle aura -->
+  <circle cx="120" cy="120" r="85" fill="url(#aura)" filter="url(#softglow)" opacity="0.4"/>
+
+  <!-- Warm circle (OFW abroad) -->
+  <circle id="Circle-Warm" cx="100" cy="120" r="72" fill="none" stroke="url(#warm)" stroke-width="6.5"/>
+
+  <!-- Cool circle (Family at home) -->
+  <circle id="Circle-Cool" cx="140" cy="120" r="72" fill="none" stroke="url(#cool)" stroke-width="6.5"/>
+
+  <!-- Intersection zone -->
+  <circle id="Intersection" cx="100" cy="120" r="70" fill="url(#ix)" clip-path="url(#cr)"/>
+
+  <!-- Beacon glow -->
+  <circle cx="120" cy="120" r="22" fill="url(#beacon)" filter="url(#glow)" opacity="0.5"/>
+
+  <!-- Beacon core -->
+  <circle id="Beacon-Outer" cx="120" cy="120" r="12" fill="url(#beacon)"/>
+  <circle id="Beacon-Core" cx="120" cy="120" r="6" fill="#FFFFFF"/>
+
+  <!-- Signal rings -->
+  <circle id="Signal-1" cx="120" cy="120" r="20" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.2"/>
+  <circle id="Signal-2" cx="120" cy="120" r="30" fill="none" stroke="#FFFFFF" stroke-width="0.8" opacity="0.1"/>
+  <circle id="Signal-3" cx="120" cy="120" r="42" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.05"/>
+</svg>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Abot Kamay WiFi</title>
+  <link rel="canonical" href="/privacy-policy.html">
+  <script>
+    (function () {
+      function detectLang() {
+        try {
+          var saved = localStorage.getItem('ak_lang');
+          if (saved === 'en' || saved === 'tl' || saved === 'zh') return saved;
+        } catch (_) {}
+        var nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+        if (nav.indexOf('zh') === 0) return 'zh';
+        if (nav.indexOf('fil') === 0 || nav.indexOf('tl') === 0) return 'tl';
+        return 'en';
+      }
+
+      var lang = detectLang();
+      var target = '/privacy.html';
+      if (lang === 'tl') target = '/privacy-tl.html';
+      if (lang === 'zh') target = '/privacy-zh.html';
+      window.location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to the privacy policy page. <a href="/privacy.html">Continue</a></p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="/js/animations.js"></script>
+
+</body>
+</html>

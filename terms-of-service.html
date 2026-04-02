@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service - Abot Kamay WiFi</title>
+  <link rel="canonical" href="/terms-of-service.html">
+  <script>
+    (function () {
+      function detectLang() {
+        try {
+          var saved = localStorage.getItem('ak_lang');
+          if (saved === 'en' || saved === 'tl' || saved === 'zh') return saved;
+        } catch (_) {}
+        var nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+        if (nav.indexOf('zh') === 0) return 'zh';
+        if (nav.indexOf('fil') === 0 || nav.indexOf('tl') === 0) return 'tl';
+        return 'en';
+      }
+
+      var lang = detectLang();
+      var target = '/terms-of-service-en.html';
+      if (lang === 'tl') target = '/terms-of-service-tl.html';
+      if (lang === 'zh') target = '/terms-of-service-zh.html';
+      window.location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to the terms page. <a href="/terms-of-service-en.html">Continue</a></p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="/js/animations.js"></script>
+
+</body>
+</html>

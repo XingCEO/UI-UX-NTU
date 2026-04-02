@@ -1,0 +1,344 @@
+<!--
+  ================================================
+  ABOT KAMAY — NEXUS LOGO
+  Web-Ready Code Package
+  ================================================
+
+  內容：
+  1. 完整 Logo（icon + 文字）— 適合網站 Header / Hero
+  2. 獨立 Icon — 適合 Favicon / App Icon / 社群頭貼
+  3. 淺色版 Logo — 適合白底頁面
+  4. CSS 變數 — 品牌色票，直接用在你的 CSS
+
+  用法：直接複製你要的區塊，貼到 HTML 裡面就好
+  ================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abot Kamay — Web Ready Logo Code</title>
+<style>
+  /* ====================================
+     品牌色票 CSS 變數 — 複製這段到你的 CSS
+     ==================================== */
+  :root {
+    /* Primary - Warm (OFW abroad) */
+    --ak-sunset:     #E8772E;
+    --ak-gold:       #F5923A;
+    --ak-amber:      #C05E1C;
+
+    /* Primary - Cool (Family at home) */
+    --ak-ocean:      #2D6FE8;
+    --ak-sky:        #5B9BF5;
+    --ak-deep-sea:   #1B4FBF;
+
+    /* Neutrals */
+    --ak-white:      #FAFAFA;
+    --ak-black:      #06060A;
+    --ak-navy:       #0C1628;
+
+    /* Typography */
+    --ak-font:       'Plus Jakarta Sans', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* ====================================
+     以下是預覽用的 CSS，不需要複製
+     ==================================== */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#111; color:#fafafa; font-family: var(--ak-font); padding:40px; }
+
+  .section {
+    margin-bottom:60px;
+    border:1px solid #222;
+    border-radius:16px;
+    padding:32px;
+    position:relative;
+  }
+  .section-tag {
+    position:absolute; top:-12px; left:20px;
+    background:#111; padding:0 12px;
+    font-size:11px; letter-spacing:3px; color:#E8772E;
+    font-weight:600; text-transform:uppercase;
+  }
+  .section-desc {
+    font-size:13px; color:#666; margin-bottom:20px; line-height:1.6;
+  }
+  .preview {
+    padding:40px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .preview.dark { background: var(--ak-black); }
+  .preview.light { background: #F8F9FC; }
+  .preview.navy { background: var(--ak-navy); }
+
+  pre {
+    background:#0a0a0f; border:1px solid #1a1a2a; border-radius:10px;
+    padding:20px; overflow-x:auto; margin-top:16px;
+    font-size:12px; line-height:1.6; color:#8B8BA0;
+  }
+  code { font-family: 'SF Mono', 'Fira Code', monospace; }
+  .copy-btn {
+    position:absolute; top:10px; right:10px;
+    background:#E8772E; color:#fff; border:none;
+    padding:6px 14px; border-radius:6px; cursor:pointer;
+    font-size:11px; font-weight:600; letter-spacing:1px;
+  }
+  .copy-btn:hover { background:#C05E1C; }
+
+  h1 { font-size:28px; font-weight:900; margin-bottom:8px; }
+  h1 span { color:#E8772E; }
+  .subtitle { font-size:13px; color:#555; margin-bottom:50px; letter-spacing:2px; }
+
+  .color-row { display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; }
+  .color-chip {
+    width:80px; text-align:center;
+  }
+  .color-chip .swatch {
+    height:40px; border-radius:8px; margin-bottom:6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .color-chip .label { font-size:10px; color:#666; }
+  .color-chip .hex { font-family:monospace; font-size:10px; color:#888; }
+</style>
+</head>
+<body>
+
+<h1>ABOT KAMAY <span>NEXUS</span></h1>
+<div class="subtitle">WEB-READY CODE PACKAGE</div>
+
+
+<!-- ================================================
+     1. 完整 LOGO — 深色背景版
+     ================================================ -->
+<div class="section">
+  <div class="section-tag">1. Full Logo — Dark</div>
+  <div class="section-desc">
+    適合：網站 Header、Hero Section、深色背景頁面<br>
+    直接複製下方 SVG 貼到你的 HTML
+  </div>
+
+  <div class="preview dark">
+    <!-- ↓↓↓ 複製這段 SVG ↓↓↓ -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200">
+      <defs>
+        <linearGradient id="ak-warm" x1="0%" y1="20%" x2="80%" y2="100%">
+          <stop offset="0%" stop-color="#F5923A"/>
+          <stop offset="40%" stop-color="#E8772E"/>
+          <stop offset="100%" stop-color="#C05E1C"/>
+        </linearGradient>
+        <linearGradient id="ak-cool" x1="100%" y1="0%" x2="20%" y2="100%">
+          <stop offset="0%" stop-color="#5B9BF5"/>
+          <stop offset="40%" stop-color="#2D6FE8"/>
+          <stop offset="100%" stop-color="#1B4FBF"/>
+        </linearGradient>
+        <radialGradient id="ak-beacon" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FFFFFF"/>
+          <stop offset="30%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+          <stop offset="60%" stop-color="#E0E7FF" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#B4C6EE" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="ak-clip"><circle cx="120" cy="100" r="62"/></clipPath>
+        <filter id="ak-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="8" result="b"/>
+          <feComposite in="SourceGraphic" in2="b" operator="over"/>
+        </filter>
+      </defs>
+      <!-- Icon -->
+      <circle cx="82" cy="100" r="62" fill="none" stroke="url(#ak-warm)" stroke-width="5.5"/>
+      <circle cx="120" cy="100" r="62" fill="none" stroke="url(#ak-cool)" stroke-width="5.5"/>
+      <circle cx="100" cy="100" r="18" fill="url(#ak-beacon)" filter="url(#ak-glow)" opacity="0.5"/>
+      <circle cx="100" cy="100" r="10" fill="url(#ak-beacon)"/>
+      <circle cx="100" cy="100" r="5" fill="#FFFFFF"/>
+      <circle cx="100" cy="100" r="17" fill="none" stroke="#FFF" stroke-width="1" opacity="0.18"/>
+      <circle cx="100" cy="100" r="26" fill="none" stroke="#FFF" stroke-width="0.7" opacity="0.08"/>
+      <!-- Text -->
+      <text x="210" y="78" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="58" font-weight="900" fill="#FAFAFA" letter-spacing="2">ABOT</text>
+      <text x="210" y="138" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="58" font-weight="900" fill="#FAFAFA" letter-spacing="2">KAMAY</text>
+      <text x="213" y="164" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="12" font-weight="600" fill="#E8772E" letter-spacing="10">WITHIN REACH</text>
+    </svg>
+    <!-- ↑↑↑ 複製到這裡 ↑↑↑ -->
+  </div>
+</div>
+
+
+<!-- ================================================
+     2. 獨立 ICON
+     ================================================ -->
+<div class="section">
+  <div class="section-tag">2. Icon Only</div>
+  <div class="section-desc">
+    適合：Favicon、App Icon、社群頭貼、Loading 動畫<br>
+    正方形比例，可自由縮放
+  </div>
+
+  <div class="preview dark" style="gap:40px;">
+    <!-- 大 -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="120" height="120">
+      <defs>
+        <linearGradient id="ik-w" x1="0%" y1="20%" x2="80%" y2="100%"><stop offset="0%" stop-color="#F5923A"/><stop offset="40%" stop-color="#E8772E"/><stop offset="100%" stop-color="#C05E1C"/></linearGradient>
+        <linearGradient id="ik-c" x1="100%" y1="0%" x2="20%" y2="100%"><stop offset="0%" stop-color="#5B9BF5"/><stop offset="40%" stop-color="#2D6FE8"/><stop offset="100%" stop-color="#1B4FBF"/></linearGradient>
+        <radialGradient id="ik-b" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFF"/><stop offset="30%" stop-color="#FFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#E0E7FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#B4C6EE" stop-opacity="0"/></radialGradient>
+        <filter id="ik-g" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+      </defs>
+      <circle cx="100" cy="120" r="72" fill="none" stroke="url(#ik-w)" stroke-width="6.5"/>
+      <circle cx="140" cy="120" r="72" fill="none" stroke="url(#ik-c)" stroke-width="6.5"/>
+      <circle cx="120" cy="120" r="22" fill="url(#ik-b)" filter="url(#ik-g)" opacity="0.5"/>
+      <circle cx="120" cy="120" r="12" fill="url(#ik-b)"/>
+      <circle cx="120" cy="120" r="6" fill="#FFFFFF"/>
+      <circle cx="120" cy="120" r="20" fill="none" stroke="#FFF" stroke-width="1.2" opacity="0.2"/>
+      <circle cx="120" cy="120" r="30" fill="none" stroke="#FFF" stroke-width="0.8" opacity="0.1"/>
+    </svg>
+    <!-- 中 -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="64" height="64">
+      <circle cx="33" cy="40" r="26" fill="none" stroke="#E8772E" stroke-width="4"/>
+      <circle cx="47" cy="40" r="26" fill="none" stroke="#2D6FE8" stroke-width="4"/>
+      <circle cx="40" cy="40" r="4" fill="#FFF"/>
+    </svg>
+    <!-- 小 -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="32" height="32">
+      <circle cx="33" cy="40" r="24" fill="none" stroke="#E8772E" stroke-width="5.5"/>
+      <circle cx="47" cy="40" r="24" fill="none" stroke="#2D6FE8" stroke-width="5.5"/>
+      <circle cx="40" cy="40" r="4.5" fill="#FFF"/>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ================================================
+     3. 淺色版 LOGO
+     ================================================ -->
+<div class="section">
+  <div class="section-tag">3. Full Logo — Light</div>
+  <div class="section-desc">
+    適合：白底頁面、列印、名片、文件 Header
+  </div>
+
+  <div class="preview light">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200">
+      <defs>
+        <linearGradient id="lw" x1="0%" y1="20%" x2="80%" y2="100%"><stop offset="0%" stop-color="#E8772E"/><stop offset="100%" stop-color="#C05E1C"/></linearGradient>
+        <linearGradient id="lc" x1="100%" y1="0%" x2="20%" y2="100%"><stop offset="0%" stop-color="#2D6FE8"/><stop offset="100%" stop-color="#1B4FBF"/></linearGradient>
+      </defs>
+      <circle cx="82" cy="100" r="62" fill="none" stroke="url(#lw)" stroke-width="5.5"/>
+      <circle cx="120" cy="100" r="62" fill="none" stroke="url(#lc)" stroke-width="5.5"/>
+      <circle cx="100" cy="100" r="10" fill="#C05E1C" opacity="0.15"/>
+      <circle cx="100" cy="100" r="5" fill="#111117"/>
+      <circle cx="100" cy="100" r="17" fill="none" stroke="#111117" stroke-width="0.8" opacity="0.1"/>
+      <text x="210" y="78" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="58" font-weight="900" fill="#111117" letter-spacing="2">ABOT</text>
+      <text x="210" y="138" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="58" font-weight="900" fill="#111117" letter-spacing="2">KAMAY</text>
+      <text x="213" y="164" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="12" font-weight="600" fill="#C05E1C" letter-spacing="10">WITHIN REACH</text>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ================================================
+     4. 海軍藍版 LOGO
+     ================================================ -->
+<div class="section">
+  <div class="section-tag">4. Full Logo — Navy</div>
+  <div class="section-desc">
+    適合：深藍背景、科技感頁面、投影片
+  </div>
+
+  <div class="preview navy">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200">
+      <defs>
+        <linearGradient id="nw" x1="0%" y1="20%" x2="80%" y2="100%"><stop offset="0%" stop-color="#F5923A"/><stop offset="100%" stop-color="#E8772E"/></linearGradient>
+        <linearGradient id="nc" x1="100%" y1="0%" x2="20%" y2="100%"><stop offset="0%" stop-color="#5B9BF5"/><stop offset="100%" stop-color="#2D6FE8"/></linearGradient>
+        <radialGradient id="nb" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFF"/><stop offset="50%" stop-color="#FFF" stop-opacity="0.6"/><stop offset="100%" stop-color="#FFF" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="82" cy="100" r="62" fill="none" stroke="url(#nw)" stroke-width="5.5"/>
+      <circle cx="120" cy="100" r="62" fill="none" stroke="url(#nc)" stroke-width="5.5"/>
+      <circle cx="100" cy="100" r="10" fill="url(#nb)" opacity="0.3"/>
+      <circle cx="100" cy="100" r="5" fill="#FFFFFF"/>
+      <circle cx="100" cy="100" r="17" fill="none" stroke="#FFF" stroke-width="0.8" opacity="0.12"/>
+      <text x="210" y="78" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="58" font-weight="900" fill="#E8EDF8" letter-spacing="2">ABOT</text>
+      <text x="210" y="138" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="58" font-weight="900" fill="#E8EDF8" letter-spacing="2">KAMAY</text>
+      <text x="213" y="164" font-family="'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif" font-size="12" font-weight="600" fill="#E8772E" letter-spacing="10">WITHIN REACH</text>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ================================================
+     5. CSS 品牌色票
+     ================================================ -->
+<div class="section">
+  <div class="section-tag">5. Brand Colors — CSS</div>
+  <div class="section-desc">
+    複製這段 CSS 變數到你的 stylesheet，全站統一品牌色
+  </div>
+
+  <div class="color-row">
+    <div class="color-chip"><div class="swatch" style="background:#F5923A"></div><div class="hex">#F5923A</div><div class="label">Gold</div></div>
+    <div class="color-chip"><div class="swatch" style="background:#E8772E"></div><div class="hex">#E8772E</div><div class="label">Sunset</div></div>
+    <div class="color-chip"><div class="swatch" style="background:#C05E1C"></div><div class="hex">#C05E1C</div><div class="label">Amber</div></div>
+    <div class="color-chip"><div class="swatch" style="background:#5B9BF5"></div><div class="hex">#5B9BF5</div><div class="label">Sky</div></div>
+    <div class="color-chip"><div class="swatch" style="background:#2D6FE8"></div><div class="hex">#2D6FE8</div><div class="label">Ocean</div></div>
+    <div class="color-chip"><div class="swatch" style="background:#1B4FBF"></div><div class="hex">#1B4FBF</div><div class="label">Deep Sea</div></div>
+    <div class="color-chip"><div class="swatch" style="background:#FAFAFA"></div><div class="hex">#FAFAFA</div><div class="label">White</div></div>
+    <div class="color-chip"><div class="swatch" style="background:#06060A;border:1px solid #333"></div><div class="hex">#06060A</div><div class="label">Black</div></div>
+    <div class="color-chip"><div class="swatch" style="background:#0C1628;border:1px solid #1A2742"></div><div class="hex">#0C1628</div><div class="label">Navy</div></div>
+  </div>
+
+  <pre><code>/* Abot Kamay Brand Colors */
+:root {
+  --ak-sunset:   #E8772E;  /* Primary warm */
+  --ak-gold:     #F5923A;  /* Warm highlight */
+  --ak-amber:    #C05E1C;  /* Warm deep */
+  --ak-ocean:    #2D6FE8;  /* Primary cool */
+  --ak-sky:      #5B9BF5;  /* Cool highlight */
+  --ak-deep-sea: #1B4FBF;  /* Cool deep */
+  --ak-white:    #FAFAFA;
+  --ak-black:    #06060A;
+  --ak-navy:     #0C1628;
+  --ak-font:     'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+/* Gradient shortcuts */
+.ak-gradient-warm {
+  background: linear-gradient(135deg, #F5923A, #C05E1C);
+}
+.ak-gradient-cool {
+  background: linear-gradient(135deg, #5B9BF5, #1B4FBF);
+}
+.ak-gradient-brand {
+  background: linear-gradient(135deg, #E8772E, #2D6FE8);
+}</code></pre>
+</div>
+
+
+<!-- ================================================
+     6. INLINE HTML 用法範例
+     ================================================ -->
+<div class="section">
+  <div class="section-tag">6. Usage Example</div>
+  <div class="section-desc">
+    放到你網站 Header 的範例寫法
+  </div>
+
+  <pre><code>&lt;!-- 網站 Header 範例 --&gt;
+&lt;header style="background:#06060A; padding:20px 40px; display:flex; align-items:center;"&gt;
+
+  &lt;!-- Logo Icon --&gt;
+  &lt;svg viewBox="0 0 80 80" width="40" height="40" style="margin-right:12px;"&gt;
+    &lt;circle cx="33" cy="40" r="26" fill="none" stroke="#E8772E" stroke-width="4"/&gt;
+    &lt;circle cx="47" cy="40" r="26" fill="none" stroke="#2D6FE8" stroke-width="4"/&gt;
+    &lt;circle cx="40" cy="40" r="4" fill="#FFF"/&gt;
+  &lt;/svg&gt;
+
+  &lt;!-- Brand Name --&gt;
+  &lt;span style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:900;
+               font-size:20px; color:#FAFAFA; letter-spacing:2px;"&gt;
+    ABOT KAMAY
+  &lt;/span&gt;
+
+&lt;/header&gt;</code></pre>
+</div>
+
+</body>
+</html>

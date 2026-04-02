@@ -1,0 +1,25 @@
+{
+  "apiBaseUrl": "https://portal.abotkamay.net",
+  "marquee": {
+    "enabled": true,
+    "style": "static",
+    "bgColor": "#C85A38",
+    "messages": {
+      "en": "未開始營業",
+      "tl": "未開始營業",
+      "zh": "未開始營業"
+    }
+  },
+  "contact": {
+    "email": "Founder@abotkamay.net",
+    "phone": "+63 XXX XXX XXXX",
+    "address": "Metro Manila, Philippines",
+    "formEndpoint": ""
+  },
+  "stats": {
+    "venues": "50+",
+    "dailyUsers": "5,000+",
+    "completionRate": "95%",
+    "cities": "3"
+  }
+}
